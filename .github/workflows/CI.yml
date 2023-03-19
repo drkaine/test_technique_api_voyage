@@ -30,7 +30,7 @@ jobs:
         run: composer global require enlightn/security-checker
 
       - name: PHP-CS-FIXER
-        run: ./vendor/bin/php-cs-fixer fix
+        run: ./vendor/bin/php-cs-fixer fix --dry-run
         
       - name: PHPStan
         run: ./vendor/bin/phpstan analyse --xdebug
