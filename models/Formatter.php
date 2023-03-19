@@ -6,9 +6,15 @@ namespace models;
 
 class Formatter
 {
-	public static function transformJsonToArray(string $json): array
+	public static function transformJsonToArray(string $json): mixed
 	{
-		return json_decode($json, true);
+		$array = json_decode($json, true);
+
+		if (array_key_exists('', $array)) {
+			return false;
+		}
+
+		return $array;
 	}
 
 	public static function transformArrayToJson(array $array): string|false
