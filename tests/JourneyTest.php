@@ -12,22 +12,14 @@ require_once './autoload.php';
 
 class JourneyTest extends TestCase
 {
-	public function testCreatejourneys(): void
+	private array $journeyListNotSorted;
+
+	private array $journeyListSorted;
+
+	protected function setUp(): void
 	{
-		$boardingCardMock = $this->getMockBuilder(BoardingCard::class)
-			->disableOriginalConstructor()
-			->getMock();
-
-		$journey = new Journey([$boardingCardMock]);
-
-		$this->assertInstanceOf(Journey::class, $journey);
-
-		$this->assertInstanceOf(BoardingCard::class, $journey->boardingCardListNotSorted[0]);
-	}
-
-	public function testSortBoardingCardList(): void
-	{
-		$journeyListNotSorted = [
+		parent::setUp();
+		$this->journeyListNotSorted = [
 			[
 				'vehicule'        => 'flight',
 				'from'            => 'Stockholm',
@@ -61,7 +53,7 @@ class JourneyTest extends TestCase
 			],
 		];
 
-		$journeyListSorted = [
+		$this->journeyListSorted = [
 			[
 				'vehicule'        => 'train',
 				'from'            => 'Madrid',
@@ -99,12 +91,28 @@ class JourneyTest extends TestCase
 				'vehicule number' => 'SK22',
 			],
 		];
+	}
 
-		$journey = new Journey($this->createMockBoardingCardList($journeyListNotSorted));
+	public function testCreatejourneys(): void
+	{
+		$boardingCardMock = $this->getMockBuilder(BoardingCard::class)
+			->disableOriginalConstructor()
+			->getMock();
+
+		$journey = new Journey([$boardingCardMock]);
+
+		$this->assertInstanceOf(Journey::class, $journey);
+
+		$this->assertInstanceOf(BoardingCard::class, $journey->boardingCardListNotSorted[0]);
+	}
+
+	public function testSortBoardingCardList(): void
+	{
+		$journey = new Journey($this->createMockBoardingCardList($this->journeyListNotSorted));
 
 		$journey->sortBoardingCardList();
 
-		$this->assertEquals($journeyListSorted, $journey->boardingCardListSorted);
+		$this->assertEquals($this->journeyListSorted, $journey->boardingCardListSorted);
 	}
 
 	public function createMockBoardingCardList($journeyListMock): array
