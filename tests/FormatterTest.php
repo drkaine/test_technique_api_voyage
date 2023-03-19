@@ -13,7 +13,7 @@ class FormatterTest extends TestCase
 {
 	public function testTransformJsonToArray(): void
 	{
-		$informationsJson = '{"vehicule" : "train","from" : "Madrid","to" : "Barcelona","seat" : "45B","gate" : "","baggage" : ""}';
+		$informationsJson = '{"vehicule":"train","from":"Madrid","to":"Barcelona","seat":"45B","gate":null,"baggage":null}';
 
 		$informationsArray = [
 			'vehicule'  => 'train',
@@ -29,15 +29,15 @@ class FormatterTest extends TestCase
 
 	public function testTransformArrayToJson(): void
 	{
-		$informationsJson = '{"vehicule" : "train","from" : "Madrid","to" : "Barcelona","seat" : "45B","gate" : "","baggage" : ""}';
+		$informationsJson = '{"vehicule":"train","from":"Madrid","to":"Barcelona","seat":"45B","gate":null,"baggage":null}';
 
 		$informationsArray = [
-			'vehicule' => 'train',
-			'from'     => 'Madrid',
-			'to'       => 'Barcelona',
-			'seat'     => '45B',
-			'gate'     => null,
-			'bagage'   => null,
+			'vehicule'  => 'train',
+			'from'      => 'Madrid',
+			'to'        => 'Barcelona',
+			'seat'      => '45B',
+			'gate'      => null,
+			'baggage'   => null,
 		];
 
 		$this->assertEquals($informationsJson, Formatter::transformArrayToJson($informationsArray));

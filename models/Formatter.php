@@ -10,4 +10,9 @@ class Formatter
 	{
 		return json_decode($json, true);
 	}
+
+	public static function transformArrayToJson(array $array): string
+	{
+		return json_encode($array);
+	}
 }
