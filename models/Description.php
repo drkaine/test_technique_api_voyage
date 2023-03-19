@@ -12,6 +12,11 @@ class Description
 
 	public function getDescription(): array
 	{
+		return $this->createDescription();
+	}
+
+	public function createDescription(): array
+	{
 		$description = [];
 
 		foreach ($this->journeyList as $boardingCard) {
