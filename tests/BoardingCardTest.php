@@ -11,17 +11,20 @@ require_once './autoload.php';
 
 class BoardingCardTest extends TestCase
 {
-	public function testcreateBoardingCards(): void
+	public function testcreateBoardingCard(): void
 	{
 		$informations = [
-			'vehicule' => 'train',
-			'from'     => 'Madrid',
-			'to'       => 'Barcelona',
-			'seat'     => '45B',
-			'gate'     => null,
-			'bagage'   => null,
+			'vehicule'        => 'train',
+			'from'            => 'Madrid',
+			'to'              => 'Barcelona',
+			'seat'            => '45B',
+			'gate'            => null,
+			'bagage'          => null,
+			'vehicule number' => null,
 		];
 
-		$this->assertNotInstanceOf(BoardingCard::class, new BoardingCard($informations));
+		$boardingCard = new BoardingCard($informations);
+
+		$this->assertInstanceOf(BoardingCard::class, $boardingCard);
 	}
 }
