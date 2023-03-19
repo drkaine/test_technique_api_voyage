@@ -12,9 +12,32 @@ class Runner
 
 	public function __construct(string $informationsJson)
 	{
-		$informationsArray = $this->informationsJsonToArray($informationsJson);
+		$this->result = $this->getDescriptionJson($informationsJson);
+	}
 
-		$boardingCardsList = $this->createBoarddingCardsList($informationsArray);
+	private function getDescriptionJson(string $informationsJson): string
+	{
+		$descriptionArray = $this->getDescriptionsArray($informationsJson);
+
+		$descriptionJson = $this->getDescriptionOnJsonFormat($descriptionArray);
+
+		return $descriptionJson;
+	}
+
+	private function getDescriptionsArray(string $informationsJson): array
+	{
+		$boardingCardsListSorted = $this->getBoardingsCardListSorted($informationsJson);
+
+		$description = new Description($boardingCardsListSorted);
+
+		$descriptionArray = $description->getDescription();
+
+		return $descriptionArray;
+	}
+
+	private function getBoardingsCardListSorted(string $informationsJson): array
+	{
+		$boardingCardsList = $this->getBoardingsCardList($informationsJson);
 
 		$journey = $this->instanceJourney($boardingCardsList);
 
@@ -22,13 +45,16 @@ class Runner
 
 		$boardingCardsListSorted = $journey->boardingCardListSorted;
 
-		$description = new Description($boardingCardsListSorted);
+		return $boardingCardsListSorted;
+	}
 
-		$descriptionArray = $description->getDescription();
+	private function getBoardingsCardList(string $informationsJson): array
+	{
+		$informationsArray = $this->informationsJsonToArray($informationsJson);
 
-		$descriptionJson = $this->getDescriptionOnJsonFormat($descriptionArray);
+		$boardingCardsList = $this->createBoarddingCardsList($informationsArray);
 
-		$this->result = $descriptionJson;
+		return $boardingCardsList;
 	}
 
 	private function informationsJsonToArray(string $informationsJson): array
