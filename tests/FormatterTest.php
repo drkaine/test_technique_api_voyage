@@ -11,14 +11,20 @@ require_once './autoload.php';
 
 class FormatterTest extends TestCase
 {
-	private string $informationsJson;
+	private string $descriptionJson;
+
+	private string $description;
 
 	private array $informationsArray;
+
+	private string $informationsJson;
 
 	protected function setUp(): void
 	{
 		parent::setUp();
 		$this->informationsJson = '{"vehicule":"train","from":"Madrid","to":"Barcelona","seat":"45B","gate":null,"baggage":null,"vehicule number":null}';
+		$this->description = 'Take train 78A from Madrid to Barcelona. Sit in seat 45B.';
+		$this->descriptionJson = '"Take train 78A from Madrid to Barcelona. Sit in seat 45B."';
 		$this->informationsArray = [
 			'vehicule'        => 'train',
 			'from'            => 'Madrid',
@@ -35,30 +41,8 @@ class FormatterTest extends TestCase
 		$this->assertEquals($this->informationsArray, Formatter::transformJsonToArray($this->informationsJson));
 	}
 
-	public function testTransformArrayToJson(): void
+	public function testTransformStringToJson(): void
 	{
-		$this->assertEquals($this->informationsJson, Formatter::transformArrayToJson($this->informationsArray));
-	}
-
-	public function testTransformBadArrayToJson(): void
-	{
-		$informationsBadArray = [
-			'train',
-			'Madrid',
-			'Barcelona',
-			'45B',
-			null,
-			null,
-			null,
-		];
-
-		$this->assertEquals(false, Formatter::transformArrayToJson($informationsBadArray));
-	}
-
-	public function testTransformBadJsonToArray(): void
-	{
-		$informationsBadJson = '{"":"train","":"Madrid","":"Barcelona","":"45B","":null,"":null}';
-
-		$this->assertEquals(false, Formatter::transformJsonToArray($informationsBadJson));
+		$this->assertEquals($this->descriptionJson, Formatter::transformStringToJson($this->description));
 	}
 }
