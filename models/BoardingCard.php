@@ -18,7 +18,7 @@ class BoardingCard
 
 	public ?string $baggage;
 
-	public ?string $vehicule_number;
+	public ?string $vehiculeNumber;
 
 	public function __construct(array $informations)
 	{
@@ -28,6 +28,6 @@ class BoardingCard
 		$this->seat = $informations['seat'];
 		$this->gate = $informations['gate'];
 		$this->baggage = $informations['baggage'];
-		$this->vehicule_number = $informations['vehicule number'];
+		$this->vehiculeNumber = $informations['vehicule number'];
 	}
 }

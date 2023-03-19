@@ -44,7 +44,7 @@ class Journey
 				'seat'            => $boardingCard->seat,
 				'gate'            => $boardingCard->gate,
 				'baggage'         => $boardingCard->baggage,
-				'vehicule number' => $boardingCard->vehicule_number,
+				'vehicule number' => $boardingCard->vehiculeNumber,
 			];
 		}
 

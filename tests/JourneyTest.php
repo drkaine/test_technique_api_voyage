@@ -120,7 +120,7 @@ class JourneyTest extends TestCase
 			$boardingCardMock->seat = $boardingCard['seat'];
 			$boardingCardMock->gate = $boardingCard['gate'];
 			$boardingCardMock->baggage = $boardingCard['baggage'];
-			$boardingCardMock->vehicule_number = $boardingCard['vehicule number'];
+			$boardingCardMock->vehiculeNumber = $boardingCard['vehicule number'];
 
 			$listMock[] = $boardingCardMock;
 		}
