@@ -56,4 +56,11 @@ class FormatterTest extends TestCase
 
 		$this->assertEquals(false, Formatter::transformArrayToJson($informationsBadArray));
 	}
+
+	public function testTransformBadJsonToArray(): void
+	{
+		$informationsBadJson = '{"":"train","":"Madrid","":"Barcelona","":"45B","":null,"":null}';
+
+		$this->assertEquals(false, Formatter::transformJsonToArray($informationsBadJson));
+	}
 }
