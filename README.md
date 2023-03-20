@@ -4,6 +4,7 @@ Script qui prend en argument un json et rend un json
 
 Pour l'utiliser :
 -   cloner le repository
+-   lancer la commande "rm -rf .git" pour supprimer le .git
 -   lancer dans le terminal "composer install"
 -   instancier la classe Runner avec un json des cartes d'embarquement avec les paramètres :
     *   vehicule
