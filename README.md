@@ -19,6 +19,8 @@ Pour l'utiliser :
 Fait en php 8.2 pour la compatibilité avec php CS Fixer
 Avec PhpUnit 10 et phpStan
 
+Pour lancer les tests unitaires utiliser la commande "./vendor/bin/phpunit tests"
+
 Piste d'amélioration :
 -   Ajouter des tests pour les cas limites (les cas d'erreurs)
 -   AJouter une gestion des erreurs
